@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.sun.imagegif.R
 import com.sun.imagegif.ui.home.HomeFragment
+import com.sun.imagegif.ui.search.SearchFragment
+import com.sun.imagegif.ui.storage.StorageFragment
 import com.sun.imagegif.ui.utils.MenuItem
 import kotlinx.android.synthetic.main.fragment_container_page.*
 
@@ -35,8 +37,8 @@ class PageContainerFragment : Fragment() {
     private fun initListFragment() {
         fragments.apply {
             add(MenuItem.HOME.ordinal, HomeFragment.newInstance())
-            add(MenuItem.SEARCH.ordinal, HomeFragment.newInstance())
-            add(MenuItem.STORAGE.ordinal, HomeFragment.newInstance())
+            add(MenuItem.SEARCH.ordinal, SearchFragment.newInstance())
+            add(MenuItem.STORAGE.ordinal, StorageFragment.newInstance())
         }
     }
 

@@ -1,6 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment"/>
+    android:paddingHorizontal="@dimen/dp_20"
+    tools:context=".ui.home.HomeFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp_42"
+        android:text="@string/title"
+        android:textColor="@color/color_dark_teal"
+        android:textSize="@dimen/sp_40"
+        android:textStyle="bold"
+        app:layout_constraintHeight_percent="0.065"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/sloganTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp_8"
+        android:text="@string/slogan"
+        android:textSize="@dimen/sp_26"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/trendingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp_50"
+        android:text="@string/title_trending"
+        android:textSize="@dimen/sp_24"
+        android:textStyle="bold"
+        app:layout_constraintHeight_percent="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sloganTextView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/trendingRecyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="horizontal"
+        app:layout_constraintHeight_percent="0.26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trendingTextView" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/randomTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp_15"
+        android:text="@string/title_random"
+        android:textSize="@dimen/sp_24"
+        android:textStyle="bold"
+        app:layout_constraintHeight_percent="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trendingRecyclerView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/randomRecyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/randomTextView" />
+</androidx.constraintlayout.widget.ConstraintLayout>
