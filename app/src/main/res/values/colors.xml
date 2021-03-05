@@ -10,4 +10,5 @@
     <color name="color_black">#000000</color>
     <color name="color_white">#FFFFFF</color>
     <color name="color_yellow_light">#E3F988</color>
+    <color name="color_orange_turmeric">#FF6C02</color>
 </resources>

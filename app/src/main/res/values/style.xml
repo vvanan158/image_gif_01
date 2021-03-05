@@ -11,8 +11,15 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <!--Bottom navigation-->
     <style name="TextBottomNavigationStyle">
         <item name="fontFamily">@font/roboto</item>
         <item name="android:textColor">@color/color_white</item>
+    </style>
+
+    <!--Tab layout-->
+    <style name="TabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+        <item name="android:textSize">@dimen/dp_18</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>
