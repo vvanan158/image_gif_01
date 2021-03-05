@@ -16,14 +16,19 @@ class ParseJson {
                 .getJSONObject(GifEntry.ORIGINAL)
                 .getString(GifEntry.URL),
             title = jsonObject.getString(GifEntry.TITLE),
-            user = userParseJson(jsonObject.getJSONObject(UserEntity.USER))
+            user = userParseJson(jsonObject)
         )
     }
 
     private fun userParseJson(jsonObject: JSONObject): User {
-        return User(
-            name = jsonObject.getString(UserEntity.USERNAME),
-            avatarUrl = jsonObject.getString(UserEntity.AVATAR_URL)
-        )
+        var user = User()
+        if (jsonObject.has(UserEntity.USER)) {
+            val jsonUser = jsonObject.getJSONObject(UserEntity.USER)
+            user = User(
+                name = jsonUser.getString(UserEntity.USERNAME),
+                avatarUrl = jsonUser.getString(UserEntity.AVATAR_URL)
+            )
+        }
+        return user
     }
 }
