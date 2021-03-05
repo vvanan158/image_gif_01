@@ -1,4 +1,4 @@
-package com.sun.imagegif.ui.utils
+package com.sun.imagegif.utils
 
 enum class MenuItem {
     HOME,

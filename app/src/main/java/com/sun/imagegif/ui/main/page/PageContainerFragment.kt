@@ -10,7 +10,7 @@ import com.sun.imagegif.R
 import com.sun.imagegif.ui.home.HomeFragment
 import com.sun.imagegif.ui.search.SearchFragment
 import com.sun.imagegif.ui.storage.StorageFragment
-import com.sun.imagegif.ui.utils.MenuItem
+import com.sun.imagegif.utils.MenuItem
 import kotlinx.android.synthetic.main.fragment_container_page.*
 
 class PageContainerFragment : Fragment() {

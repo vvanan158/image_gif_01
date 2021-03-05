@@ -3,6 +3,8 @@
     <string name="home">Home</string>
     <string name="search">Search</string>
     <string name="Storage">Storage</string>
+    <string name="tab_gif">GIF</string>
+    <string name="tab_text">Text</string>
     <string name="title">YGIF</string>
     <string name="slogan">Bring joy to everyone</string>
     <string name="title_trending">Trending</string>
