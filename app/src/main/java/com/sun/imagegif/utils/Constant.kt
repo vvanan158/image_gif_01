@@ -11,4 +11,6 @@ object Constant {
     const val RANDOM = "random"
     const val SEARCH = "search"
     const val LIMIT = "&limit=10"
+    const val OFFSET = "&offset="
+    const val PAGE = 10
 }

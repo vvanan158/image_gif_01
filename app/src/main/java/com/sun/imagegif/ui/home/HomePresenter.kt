@@ -21,6 +21,19 @@ class HomePresenter(private val gifRepository: GifRepository) : HomeContract.Pre
         })
     }
 
+    override fun getRandom() {
+        gifRepository.getRandom(object : OnFetchDataJsonListener<MutableList<Gif>> {
+
+            override fun onSuccess(data: MutableList<Gif>) {
+                view?.onGetRandomSuccess(data)
+            }
+
+            override fun onError(e: Exception?) {
+                view?.onError(e)
+            }
+        })
+    }
+
     override fun onStart() = Unit
 
     override fun onStop() = Unit

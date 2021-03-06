@@ -21,6 +21,17 @@ class GifRemoteDataSource : GifDataSource.Remote {
         GetJsonFromUrl(listener, GifEntry.GIF).execute(trendingUrl)
     }
 
+    override fun getRandom(listener: OnFetchDataJsonListener<MutableList<Gif>>) {
+        val randomUrl = Constant.BASE_URL +
+                Constant.TYPE_GIF +
+                Constant.TRENDING +
+                Constant.BASE_API_KEY +
+                Constant.LIMIT +
+                Constant.OFFSET +
+                Constant.PAGE.toString()
+        GetJsonFromUrl(listener, GifEntry.GIF).execute(randomUrl)
+    }
+
     companion object {
         val INSTANCE: GifRemoteDataSource by lazy {
             Holder.INSTANCE
