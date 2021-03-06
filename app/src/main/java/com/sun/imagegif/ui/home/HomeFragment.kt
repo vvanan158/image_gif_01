@@ -8,9 +8,12 @@ import androidx.fragment.app.Fragment
 import com.sun.imagegif.R
 import com.sun.imagegif.data.model.Gif
 import com.sun.imagegif.data.source.repositories.GifRepository
+import com.sun.imagegif.ui.detail.DetailFragment
 import com.sun.imagegif.ui.home.adapter.RandomAdapter
 import com.sun.imagegif.ui.home.adapter.TrendingAdapter
 import com.sun.imagegif.utils.OnItemRecyclerViewClickListener
+import com.sun.imagegif.utils.addFragment
+import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), OnItemRecyclerViewClickListener<Gif>, HomeContract.View {
@@ -53,7 +56,9 @@ class HomeFragment : Fragment(), OnItemRecyclerViewClickListener<Gif>, HomeContr
 
     override fun onError(exception: Exception?) = Unit
 
-    override fun onItemClickListener(item: Gif?) = Unit
+    override fun onItemClickListener(item: Gif?) {
+        addFragment(DetailFragment.newInstance(), R.id.containerLayout)
+    }
 
     private fun initViews() {
         initRecyclerView()
