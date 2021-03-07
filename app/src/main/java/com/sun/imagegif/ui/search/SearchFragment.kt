@@ -4,11 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import com.sun.imagegif.R
+import com.sun.imagegif.ui.search.category.gif.SearchGifFragment
+import com.sun.imagegif.ui.search.category.text.SearchTextFragment
 import kotlinx.android.synthetic.main.fragment_search.*
 
 class SearchFragment : Fragment() {
+
+    private val pagerAdapter by lazy {
+        SearchPagerAdapter(childFragmentManager)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,10 +27,36 @@ class SearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tabLayoutSearch.apply {
-            addTab(tabLayoutSearch.newTab().setText(getString(R.string.tab_gif)))
-            addTab(tabLayoutSearch.newTab().setText(getString(R.string.tab_text)))
+        initViews()
+        handleEvents()
+    }
+
+    private fun initViews() {
+        initViewPager()
+        initTabLayout()
+    }
+
+    private fun handleEvents() {
+        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let { pagerAdapter.searchGif(it) }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?) = false
+        })
+    }
+
+    private fun initViewPager() {
+        viewPagerSearch.adapter = pagerAdapter.apply {
+            addFragment(SearchGifFragment.newInstance())
+            addFragment(SearchTextFragment.newInstance())
         }
+    }
+
+    private fun initTabLayout() {
+        tabLayoutSearch.setupWithViewPager(viewPagerSearch)
     }
 
     companion object {

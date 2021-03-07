@@ -1,8 +1,8 @@
-package com.sun.imagegif.ui.search
+package com.sun.imagegif.ui.search.category.text
 
 import com.sun.imagegif.utils.BasePresenter
 
-interface SearchContract {
+interface SearchTextContract {
 
     interface Presenter : BasePresenter<View>
 
