@@ -8,18 +8,18 @@ import androidx.fragment.app.Fragment
 import com.sun.imagegif.R
 import com.sun.imagegif.data.model.Gif
 import com.sun.imagegif.data.source.repositories.GifRepository
+import com.sun.imagegif.ui.home.adapter.RandomAdapter
 import com.sun.imagegif.ui.home.adapter.TrendingAdapter
 import com.sun.imagegif.utils.OnItemRecyclerViewClickListener
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), OnItemRecyclerViewClickListener<Gif>, HomeContract.View {
 
-    private val trendingAdapter by lazy {
-        TrendingAdapter()
-    }
-    private val presenter by lazy {
-        HomePresenter(GifRepository.INSTANCE)
-    }
+    private val trendingAdapter by lazy { TrendingAdapter() }
+
+    private val randomAdapter by lazy { RandomAdapter() }
+
+    private val presenter by lazy { HomePresenter(GifRepository.INSTANCE) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,11 +39,16 @@ class HomeFragment : Fragment(), OnItemRecyclerViewClickListener<Gif>, HomeContr
         presenter.run {
             setView(this@HomeFragment)
             getTrending()
+            getRandom()
         }
     }
 
     override fun onGetTrendingSuccess(gifs: MutableList<Gif>) {
         trendingAdapter.addTrending(gifs)
+    }
+
+    override fun onGetRandomSuccess(gifs: MutableList<Gif>) {
+        randomAdapter.addRandom(gifs)
     }
 
     override fun onError(exception: Exception?) = Unit
@@ -58,6 +63,10 @@ class HomeFragment : Fragment(), OnItemRecyclerViewClickListener<Gif>, HomeContr
         with(trendingRecyclerView) {
             trendingAdapter.registerItemRecyclerViewClickListener(this@HomeFragment)
             adapter = trendingAdapter
+        }
+        with(randomRecyclerView) {
+            randomAdapter.registerItemRecyclerViewClickListener(this@HomeFragment)
+            adapter = randomAdapter
         }
     }
 

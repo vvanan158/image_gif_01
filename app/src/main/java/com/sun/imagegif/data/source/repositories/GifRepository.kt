@@ -2,8 +2,8 @@ package com.sun.imagegif.data.source.repositories
 
 import com.sun.imagegif.data.model.Gif
 import com.sun.imagegif.data.source.GifDataSource
-import com.sun.imagegif.data.source.remote.OnFetchDataJsonListener
 import com.sun.imagegif.data.source.remote.GifRemoteDataSource
+import com.sun.imagegif.data.source.remote.OnFetchDataJsonListener
 
 class GifRepository(private val remote: GifDataSource.Remote) {
 
@@ -13,6 +13,9 @@ class GifRepository(private val remote: GifDataSource.Remote) {
 
     fun getTrending(listener: OnFetchDataJsonListener<MutableList<Gif>>) =
         remote.getTrending(listener)
+
+    fun getRandom(listener: OnFetchDataJsonListener<MutableList<Gif>>) =
+        remote.getRandom(listener)
 
     companion object {
         val INSTANCE: GifRepository by lazy {

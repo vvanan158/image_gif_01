@@ -6,6 +6,9 @@ import com.sun.imagegif.data.source.remote.OnFetchDataJsonListener
 interface GifDataSource {
 
     interface Remote {
+
         fun getTrending(listener: OnFetchDataJsonListener<MutableList<Gif>>)
+
+        fun getRandom(listener: OnFetchDataJsonListener<MutableList<Gif>>)
     }
 }

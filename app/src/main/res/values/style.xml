@@ -14,7 +14,7 @@
     <!--Bottom navigation-->
     <style name="TextBottomNavigationStyle">
         <item name="fontFamily">@font/roboto</item>
-        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textColor">@color/color_orange_turmeric</item>
     </style>
 
     <!--Tab layout-->
