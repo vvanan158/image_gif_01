@@ -10,5 +10,10 @@ interface GifDataSource {
         fun getTrending(listener: OnFetchDataJsonListener<MutableList<Gif>>)
 
         fun getRandom(listener: OnFetchDataJsonListener<MutableList<Gif>>)
+
+        fun searchWithGif(
+            keyword: String,
+            listener: OnFetchDataJsonListener<MutableList<Gif>>
+        )
     }
 }

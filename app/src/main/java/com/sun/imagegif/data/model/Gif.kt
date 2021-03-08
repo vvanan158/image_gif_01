@@ -12,6 +12,6 @@ object GifEntry {
     const val TITLE = "title"
     const val ID = "id"
     const val IMAGE = "images"
-    const val ORIGINAL = "original"
+    const val FIXED_WIDTH = "fixed_width"
     const val URL = "url"
 }

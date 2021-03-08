@@ -13,4 +13,5 @@ object Constant {
     const val LIMIT = "&limit=10"
     const val OFFSET = "&offset="
     const val PAGE = 10
+    const val KEYWORD = "&q="
 }

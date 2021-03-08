@@ -17,6 +17,13 @@ class GifRepository(private val remote: GifDataSource.Remote) {
     fun getRandom(listener: OnFetchDataJsonListener<MutableList<Gif>>) =
         remote.getRandom(listener)
 
+    fun searchWithGif(
+        keyword: String,
+        listener: OnFetchDataJsonListener<MutableList<Gif>>
+    ) {
+        remote.searchWithGif(keyword, listener)
+    }
+
     companion object {
         val INSTANCE: GifRepository by lazy {
             Holder.INSTANCE
