@@ -24,6 +24,13 @@ class GifRepository(private val remote: GifDataSource.Remote) {
         remote.searchWithGif(keyword, listener)
     }
 
+    fun searchWithText(
+        keyword: String,
+        listener: OnFetchDataJsonListener<MutableList<Gif>>
+    ){
+        remote.searchWithText(keyword, listener)
+    }
+
     companion object {
         val INSTANCE: GifRepository by lazy {
             Holder.INSTANCE
