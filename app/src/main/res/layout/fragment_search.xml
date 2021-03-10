@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_black_dark"
     tools:context=".ui.search.SearchFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayoutSearch"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/color_dark_turquoise"
+        android:background="@color/color_black_light"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.095"
@@ -21,14 +22,14 @@
             android:id="@+id/searchBar"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/dp_55"
-            android:layout_marginEnd="@dimen/dp_55"
             android:background="@drawable/custom_search_background"
+            app:iconifiedByDefault="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.48"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.8"
             app:searchIcon="@drawable/ic_search_drawable" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -36,15 +37,15 @@
         android:id="@+id/tabLayoutSearch"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:tabTextColor="@color/color_white"
+        android:background="@color/color_black_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.04"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutSearch"
         app:tabIndicatorColor="@color/color_orange_turmeric"
         app:tabIndicatorHeight="@dimen/dp_2"
         app:tabTextAppearance="@style/TabLayoutTextAppearance"
-        app:layout_constraintHeight_percent="0.04"
-        android:background="@color/color_dark_turquoise"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutSearch" />
+        app:tabTextColor="@color/color_white" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPagerSearch"

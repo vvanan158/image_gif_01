@@ -29,7 +29,10 @@ class PageContainerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initListFragment()
         fragmentManager?.let {
-            viewPagerContainer.adapter = ViewPagerContainerAdapter(it, fragments)
+            viewPagerContainer.apply {
+                adapter = ViewPagerContainerAdapter(it, fragments)
+                offscreenPageLimit = OFF_SCREEN_PAGE_LIMIT
+            }
             initItemBottomBar()
         }
     }
@@ -76,6 +79,8 @@ class PageContainerFragment : Fragment() {
     }
 
     companion object {
+        private const val OFF_SCREEN_PAGE_LIMIT = 3
+
         fun newInstance() = PageContainerFragment()
     }
 }

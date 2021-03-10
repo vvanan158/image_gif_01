@@ -13,7 +13,7 @@ class ParseJson {
             id = jsonObject.getString(GifEntry.ID),
             imageUrl = jsonObject
                 .getJSONObject(GifEntry.IMAGE)
-                .getJSONObject(GifEntry.ORIGINAL)
+                .getJSONObject(GifEntry.FIXED_WIDTH)
                 .getString(GifEntry.URL),
             title = jsonObject.getString(GifEntry.TITLE),
             user = userParseJson(jsonObject)
