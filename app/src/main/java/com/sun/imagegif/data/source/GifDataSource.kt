@@ -15,5 +15,10 @@ interface GifDataSource {
             keyword: String,
             listener: OnFetchDataJsonListener<MutableList<Gif>>
         )
+
+        fun searchWithText(
+            keyword: String,
+            listener: OnFetchDataJsonListener<MutableList<Gif>>
+        )
     }
 }

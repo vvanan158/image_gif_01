@@ -53,9 +53,7 @@ class SearchGifFragment : Fragment(),
     }
 
     private fun initRecyclerView() {
-        with(gifImageRecyclerView) {
-            adapter = searchAdapter
-        }
+        gifImageRecyclerView.adapter = searchAdapter
     }
 
     companion object {

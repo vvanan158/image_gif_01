@@ -46,6 +46,20 @@ class GifRemoteDataSource : GifDataSource.Remote {
         GetJsonFromUrl(listener, GifEntry.GIF).execute(searchUrl)
     }
 
+    override fun searchWithText(
+        keyword: String,
+        listener: OnFetchDataJsonListener<MutableList<Gif>>
+    ) {
+        val searchUrl = Constant.BASE_URL +
+                Constant.TYPE_TEXT +
+                Constant.SEARCH +
+                Constant.BASE_API_KEY +
+                Constant.KEYWORD +
+                keyword +
+                Constant.LIMIT
+        GetJsonFromUrl(listener, GifEntry.GIF).execute(searchUrl)
+    }
+
     companion object {
         val INSTANCE: GifRemoteDataSource by lazy {
             Holder.INSTANCE
