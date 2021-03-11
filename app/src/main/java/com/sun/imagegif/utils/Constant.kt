@@ -13,4 +13,5 @@ object Constant {
     const val OFFSET = "&offset="
     const val PAGE = 10
     const val KEYWORD = "&q="
+    const val BUNDLE_GIF = "gifDetail"
 }

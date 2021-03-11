@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.sun.imagegif.R
+import com.sun.imagegif.data.model.Gif
+import com.sun.imagegif.utils.Constant
+import com.sun.imagegif.utils.loadUrl
 import kotlinx.android.synthetic.main.fragment_detail.*
 
 class DetailFragment : Fragment() {
@@ -21,10 +24,20 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        handleEvent()
     }
 
     private fun initViews() {
-        handleEvent()
+        initDetailView()
+    }
+
+    private fun initDetailView() {
+        arguments?.getParcelable<Gif>(Constant.BUNDLE_GIF)?.let {
+            detailsImageView.loadUrl(it.imageUrl)
+            userImageView.loadUrl(it.user.avatarUrl)
+            titleDetailsTextView.text = it.title
+            userNameTextView.text = it.user.name
+        }
     }
 
     private fun handleEvent() {
@@ -34,6 +47,8 @@ class DetailFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() = DetailFragment()
+        fun newInstance(bundle: Bundle) = DetailFragment().apply {
+            arguments = bundle
+        }
     }
 }
