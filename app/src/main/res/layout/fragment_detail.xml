@@ -79,7 +79,8 @@
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/detailsImageView"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop" />
                     </androidx.cardview.widget.CardView>
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -90,8 +91,9 @@
                         android:layout_marginTop="@dimen/dp_12"
                         android:layout_marginEnd="@dimen/dp_20"
                         android:fontFamily="@font/roboto"
+                        android:gravity="center"
                         android:maxLines="2"
-                        android:textColor="@color/color_light_teal"
+                        android:textColor="@color/color_dark_turquoise"
                         android:textSize="@dimen/sp_18"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -108,26 +110,34 @@
                         app:layout_constraintDimensionRatio="411:40"
                         app:layout_constraintStart_toStartOf="parent">
 
-                        <androidx.appcompat.widget.AppCompatImageView
-                            android:id="@+id/userImageButton"
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/userCardView"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:background="@drawable/custom_circle_button"
+                            android:scaleType="centerCrop"
+                            app:cardCornerRadius="@dimen/dp_100"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintDimensionRatio="1:1"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/userImageView"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" />
+                        </androidx.cardview.widget.CardView>
 
                         <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/userNameTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/dp_10"
                             android:layout_marginEnd="@dimen/dp_20"
                             android:maxLines="1"
-                            android:textColor="@color/color_orange_turmeric"
+                            android:textColor="@color/color_white"
                             android:textSize="@dimen/sp_14"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="@id/bottomConstraintLayout"
-                            app:layout_constraintStart_toEndOf="@id/userImageButton"
+                            app:layout_constraintStart_toEndOf="@id/userCardView"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <androidx.appcompat.widget.AppCompatImageView

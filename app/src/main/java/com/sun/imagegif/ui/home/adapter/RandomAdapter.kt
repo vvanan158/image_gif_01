@@ -3,37 +3,34 @@ package com.sun.imagegif.ui.home.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sun.imagegif.data.model.Gif
-import com.sun.imagegif.utils.OnItemRecyclerViewClickListener
-import com.sun.imagegif.utils.OnItemViewHolderClickListener
 
-class RandomAdapter : RecyclerView.Adapter<RandomViewHolder>(),
-    OnItemViewHolderClickListener<Gif> {
+class RandomAdapter : RecyclerView.Adapter<RandomViewHolder>() {
 
-    private val items = mutableListOf<Gif>()
-    private var listener: OnItemRecyclerViewClickListener<Gif>? = null
+    private val gifs = mutableListOf<Gif>()
+    private var listener: ((Gif) -> Unit)? = null
 
-    fun addRandom(items: MutableList<Gif>?) {
-        items?.let {
-            this.items.addAll(it)
-            notifyItemRangeInserted(this.items.size - it.size, it.size)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RandomViewHolder {
+        return RandomViewHolder(parent).apply {
+            registerItemViewHolderListener {
+                listener?.let { func -> func(gifs[it]) }
+            }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RandomViewHolder {
-        return RandomViewHolder(parent, this)
-    }
-
     override fun onBindViewHolder(holder: RandomViewHolder, position: Int) {
-        holder.onBind(items[position])
+        holder.onBind(gifs[position])
     }
 
-    override fun getItemCount() = items.size
+    override fun getItemCount() = gifs.size
 
-    override fun onItemClickListener(item: Gif?) {
-        listener?.onItemClickListener(item)
+    fun addRandom(items: MutableList<Gif>?) {
+        items?.let {
+            gifs.addAll(it)
+            notifyItemRangeInserted(this.gifs.size - it.size, it.size)
+        }
     }
 
-    fun registerItemRecyclerViewClickListener(onItemRecyclerViewClickListener: OnItemRecyclerViewClickListener<Gif>?) {
-        listener = onItemRecyclerViewClickListener
+    fun setOnClickItemListener(listener: ((Gif) -> Unit)) {
+        this.listener = listener
     }
 }

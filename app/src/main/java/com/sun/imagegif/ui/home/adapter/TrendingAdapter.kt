@@ -3,37 +3,34 @@ package com.sun.imagegif.ui.home.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sun.imagegif.data.model.Gif
-import com.sun.imagegif.utils.OnItemRecyclerViewClickListener
-import com.sun.imagegif.utils.OnItemViewHolderClickListener
 
-class TrendingAdapter : RecyclerView.Adapter<TrendingViewHolder>(),
-    OnItemViewHolderClickListener<Gif> {
+class TrendingAdapter : RecyclerView.Adapter<TrendingViewHolder>() {
 
-    private val items = mutableListOf<Gif>()
-    private var listener: OnItemRecyclerViewClickListener<Gif>? = null
+    private val gifs = mutableListOf<Gif>()
+    private var listener: ((Gif) -> Unit)? = null
 
-    fun addTrending(items: MutableList<Gif>?) {
-        items?.let {
-            this.items.addAll(it)
-            notifyItemRangeInserted(this.items.size - it.size, it.size)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrendingViewHolder {
+        return TrendingViewHolder(parent).apply {
+            registerItemViewHolderListener {
+                listener?.let { func -> func(gifs[it]) }
+            }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrendingViewHolder {
-        return TrendingViewHolder(parent, this)
-    }
-
     override fun onBindViewHolder(holder: TrendingViewHolder, position: Int) {
-        holder.onBind(items[position])
+        holder.onBind(gifs[position])
     }
 
-    override fun getItemCount() = items.size
+    override fun getItemCount() = gifs.size
 
-    override fun onItemClickListener(item: Gif?) {
-        listener?.onItemClickListener(item)
+    fun addTrending(items: MutableList<Gif>?) {
+        items?.let {
+            gifs.addAll(it)
+            notifyItemRangeInserted(this.gifs.size - it.size, it.size)
+        }
     }
 
-    fun registerItemRecyclerViewClickListener(onItemRecyclerViewClickListener: OnItemRecyclerViewClickListener<Gif>?) {
-        listener = onItemRecyclerViewClickListener
+    fun setOnClickItemListener(listener: (Gif) -> Unit) {
+        this.listener = listener
     }
 }

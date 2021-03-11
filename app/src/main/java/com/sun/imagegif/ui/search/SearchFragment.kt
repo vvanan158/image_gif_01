@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_search.*
 class SearchFragment : Fragment() {
 
     private val pagerAdapter by lazy {
-        SearchPagerAdapter(childFragmentManager)
+        SearchPagerAdapter(requireFragmentManager())
     }
 
     override fun onCreateView(

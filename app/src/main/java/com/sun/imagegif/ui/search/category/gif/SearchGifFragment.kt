@@ -8,7 +8,10 @@ import androidx.fragment.app.Fragment
 import com.sun.imagegif.R
 import com.sun.imagegif.data.model.Gif
 import com.sun.imagegif.data.source.repositories.GifRepository
+import com.sun.imagegif.ui.detail.DetailFragment
 import com.sun.imagegif.ui.search.adapter.SearchAdapter
+import com.sun.imagegif.utils.Constant
+import com.sun.imagegif.utils.addFragment
 import kotlinx.android.synthetic.main.fragment_search_gif.*
 
 class SearchGifFragment : Fragment(),
@@ -31,6 +34,7 @@ class SearchGifFragment : Fragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        handleEvent()
     }
 
     override fun onStart() {
@@ -54,6 +58,14 @@ class SearchGifFragment : Fragment(),
 
     private fun initRecyclerView() {
         gifImageRecyclerView.adapter = searchAdapter
+    }
+
+    private fun handleEvent(){
+        searchAdapter.setOnClickItemListener {
+            addFragment(DetailFragment.newInstance(Bundle().apply {
+                putParcelable(Constant.BUNDLE_GIF, it)
+            }), R.id.containerLayout)
+        }
     }
 
     companion object {
