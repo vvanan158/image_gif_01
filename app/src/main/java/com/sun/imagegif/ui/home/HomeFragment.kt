@@ -13,7 +13,6 @@ import com.sun.imagegif.ui.home.adapter.RandomAdapter
 import com.sun.imagegif.ui.home.adapter.TrendingAdapter
 import com.sun.imagegif.utils.Constant
 import com.sun.imagegif.utils.addFragment
-import kotlinx.android.synthetic.main.fragment_detail.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), HomeContract.View {
@@ -22,7 +21,7 @@ class HomeFragment : Fragment(), HomeContract.View {
 
     private val randomAdapter by lazy { RandomAdapter() }
 
-    private val presenter by lazy { HomePresenter(GifRepository.INSTANCE) }
+    private val presenter by lazy { HomePresenter(GifRepository.getInstance(requireContext())) }
 
     override fun onCreateView(
         inflater: LayoutInflater,

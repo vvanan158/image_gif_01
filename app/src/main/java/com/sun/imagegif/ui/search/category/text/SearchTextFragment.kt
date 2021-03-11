@@ -18,7 +18,7 @@ class SearchTextFragment : Fragment(),
     SearchTextContract.View {
 
     private val presenter by lazy {
-        SearchTextPresenter(GifRepository.INSTANCE)
+        SearchTextPresenter(GifRepository.getInstance(requireContext()))
     }
     private val searchAdapter by lazy {
         SearchAdapter()
